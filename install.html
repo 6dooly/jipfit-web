@@ -52,8 +52,17 @@
   </div>
 
   <div id="ios">
-    <p class="sub" style="margin-bottom:12px">iPhone 버전은 App Store 출시 준비 중입니다.</p>
-    <a class="btn" style="background:rgba(255,255,255,0.12)" href="https://jipfit.pages.dev">웹으로 미리 체험하기</a>
+    <a class="btn" href="https://jipfit.pages.dev">📱 집핏 웹 앱 열기 (iPhone·iPad)</a>
+    <div class="steps">
+      <h2>홈 화면에 앱처럼 설치하기</h2>
+      <ol>
+        <li>위 버튼으로 <b>Safari</b>에서 집핏을 엽니다</li>
+        <li>하단 <b>공유 버튼(□↑)</b>을 누릅니다</li>
+        <li><b>"홈 화면에 추가"</b>를 선택합니다</li>
+        <li>홈 화면의 집핏 아이콘으로 앱처럼 사용하세요</li>
+      </ol>
+    </div>
+    <p class="muted" style="margin-top:14px">App Store 정식 버전은 심사 준비 중입니다 — 출시되면 이 페이지에서 안내됩니다.</p>
   </div>
 
   <div id="desktop">
@@ -67,7 +76,9 @@
 <script>
   const ua = navigator.userAgent;
   const isAndroid = /Android/i.test(ua);
-  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  // iPadOS 13+ 는 Mac 으로 위장 — 터치 지원 여부로 판별
+  const isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+    (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
   if (isIOS) { document.getElementById('android').style.display = 'none';
                document.getElementById('ios').style.display = 'block'; }
   else if (!isAndroid) { document.getElementById('android').style.display = 'none';
